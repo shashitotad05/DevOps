@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+$font-family-sans-serif : 'Roboto', sans-serif;
+$serif : 'Roboto', sans-serif;
+$blue: #074CE1;
+// Change the hover buttons
+$uxpl-blue-hover-active: #063eb6;
+
+// Initialize the Open edX Bootstrap theme
+@import 'edx-bootstrap/sass/open-edx/theme';
+
+/* Fonts */
+$font-stack: "Roboto", sans-serif;
+$font-size: 13px;
+
+/* Colors */
+$background-color: #eaeaea;
+$text-color: #000000;
+$page-color: #f5f5f5;
+$header-bar-color: #074CE1;
+$vertical-line-color:  #0958FE;
+$gray-bar-color: #cccccc;
+$gray-smalltext-color: #777777;
+$border-color-light: #ffffff;
+$button-visited-color: #607D8B;
+$menu-bg-color: #ffffff;
+$footer-bg-color: #eeeeee;
+$footer-header-color: #060606;
+$footer-link-color: #707070;
+$footer-copyright-color: #5E5959;
+$button-hover: #063eb6;
+
+/* breakpoints */
+$breakpoint-small: 539px;  //Mobile phones
+$breakpoint-medium: 768px; //Mobilephones portrait and Tablets
+$breakpoint-large: 992px; //old resolutions and tablets
+$breakpoint-xlarge: 1200px; //PC
+
+$nav-back-color: white;
+
+$popup-video-width: 640px;
+$popup-video-height: 480px;
+
+$left-space: 50px;
+$right-space: 50px;
+
+/* Cards */
+$card-border-radius: 10px;
+$card-height: 160px;
+$card-minimum-size: 210px;
+$entity-radius: 5px;
+$card-content-pad: 0 15px 10px;
+$action-btn-color: #074ce1;
+
+/* Logos and SVG */
+
+$menu-down-arrow: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3C!-- Generator: Adobe Illustrator 23.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 220.5 128.8' style='enable-background:new 0 0 220.5 128.8;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:none;stroke:%230857FF;stroke-width:9;stroke-miterlimit:10;%7D .st1%7Bfill:none;stroke:%230857FF;stroke-width:14;stroke-miterlimit:10;%7D%0A%3C/style%3E%3Cpath class='st0' d='M215.4,13'/%3E%3Cpath class='st0' d='M5.2,13'/%3E%3Cpolyline class='st1' points='215.4,13 110.3,118.1 5.2,13 '/%3E%3C/svg%3E ");
+$menu-search-icon: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3C!-- Generator: Adobe Illustrator 23.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 26.96 26.85' style='enable-background:new 0 0 26.96 26.85;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:none;stroke:%230857FF;stroke-width:2.5;stroke-miterlimit:10;%7D%0A%3C/style%3E%3Ccircle class='st0' cx='12.09' cy='12.22' r='10.56'/%3E%3Cline class='st0' x1='19.57' y1='19.68' x2='25.58' y2='25.7'/%3E%3C/svg%3E ");

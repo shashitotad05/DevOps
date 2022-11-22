@@ -1,0 +1,146 @@
+@media only screen and (max-width: 992px) {
+  body .wrapper-footer footer#footer-openedx {
+    .colophon {
+      float: none;
+      text-align: center;
+      width: 100%;
+
+      .nav-colophon {
+        display: flex;
+        justify-content: center;
+			}
+
+      .copyright,
+      .wrapper-logo,
+      .nav-legal {
+        display: flex;
+        justify-content: center;
+      }
+    }
+
+    .footer-container-logos {
+      align-items: center;
+
+      p {
+        text-align: center;
+      }
+    }
+
+    .footer-about-openedx {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .content-wrapper .course-info .container {
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+
+  .course-content .xmodule_display.xmodule_SequenceModule .sequence-nav {
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+    margin: 0 auto;
+
+    ol {
+      flex-wrap: wrap;
+
+      li {
+        border-right-style: solid;
+        border-left-style: solid;
+      }
+    }
+
+    .sequence-list-wrapper,
+    .sequence-nav-button.button-next,
+    .sequence-nav-button.button-previous {
+      flex: 0 0 100%;
+      max-width: 100%;
+      min-height: 44px;
+      z-index: 2000;
+    }
+
+    .sequence-nav-button.button-next,
+    .sequence-nav-button.button-previous {
+      margin: .75rem 0;
+    }
+  }
+
+  .content-wrapper .course-info header.course-profile .intro-inner-wrapper {
+    .table {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+
+    .intro {
+      width: 100%;
+      text-align: center;
+
+      .register {
+        margin: 0 auto;
+      }
+    }
+
+    .media {
+      width: auto;
+
+      img {
+        height: 160px;
+        max-width: 264px;
+      }
+    }
+  }
+
+  .content-wrapper .course-info {
+    .course-sidebar {
+      width: 100%;
+    }
+
+    header.course-profile {
+      height: auto;
+    }
+  }  
+
+    //Dashboard
+  .dashboard .main-container .my-courses .course .details .wrapper-course-image {
+    display: block;
+    width: 100%;
+
+    .cover {
+      max-width: 184px;
+    }
+
+    img {
+      height: 120px;
+    }
+  }
+
+  .find-courses {
+    .title-courses,
+    #filter-bar {
+      float: none;
+    }
+
+    .container-courses-discovery {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
+    #discovery-form,
+    #filter-bar {
+      width: 100%;
+    }
+
+    .courses {
+      padding-top: 0;
+    }
+
+    .search-facets.phone-menu {
+      margin: 30px 0;
+    }
+  }
+}

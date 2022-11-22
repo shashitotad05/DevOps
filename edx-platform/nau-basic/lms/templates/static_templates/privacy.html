@@ -1,0 +1,33 @@
+<%page expression_filter="h"/>
+<%! from django.utils.translation import ugettext as _ 
+%>
+
+<%inherit file="../main.html" />
+
+<%block name="pagetitle">${_("Privacy Policy")}</%block>
+
+<main id="main" aria-label="Content" tabindex="-1">
+    <section class="container about">
+        <h1>
+            <%block name="pageheader">${page_header or _("Privacy Policy")}</%block>
+        </h1>
+        <h2>Regulamento Geral sobre a Prote&ccedil;&atilde;o de Dados(RGPD)</h2>
+<p>O Projeto NAU e a Plataforma NAU respeitam e fomentam a utiliza&ccedil;&atilde;o do Regulamento Geral sobre a Prote&ccedil;&atilde;o de Dados (RGPD) vigente.</p>
+<p>Neste sentido a NAU compromete-se a:</p>
+<ul>
+<li>Solicitar apenas os dados essenciais &agrave; operacionaliza&ccedil;&atilde;o do servi&ccedil;o prestado;</li>
+<li>Disponibilizar apenas os dados de perfil (nome, e-mail) dos formandos &agrave;s entidades promotoras dos cursos onde estes est&atilde;o matriculados;</li>
+<li>Dados adicionais solicitados no &acirc;mbito dos cursos s&atilde;o disponibilizados somente &agrave;s entidades promotoras respectivas;</li>
+<li>Disponibilizar dados de progresso e da performance da plataforma para investiga&ccedil;&atilde;o cient&iacute;fica anonimizados e sumariados.</li>
+</ul>
+<p>Os dados de perfil disponibilizados ser&atilde;o guardados enquanto a Plataforma NAU estiver ativa, podendo o utilizador altera-los a qualquer momento, assim como solicitar a sua elimina&ccedil;&atilde;o na&nbsp;<a href="/account/settings">zona&nbsp;gest&atilde;o de conta</a>.</p>
+
+<h2>Declara&ccedil;&atilde;o de Consentimento Informado</h2>
+<p>A submiss&atilde;o do pedido de cria&ccedil;&atilde;o de utilizador na Plataforma NAU, autoriza automaticamente o tratamento pela Funda&ccedil;&atilde;o para a Ci&ecirc;ncia e a Tecnologia (FCT) dos dados pessoais de identifica&ccedil;&atilde;o (nome) e contato (endere&ccedil;o de e-mail), para fins de organiza&ccedil;&atilde;o, gest&atilde;o e funcionamento da atividade da Plataforma NAU, na observ&acirc;ncia das obriga&ccedil;&otilde;es legais e regulamentares aplic&aacute;veis, e sem a disponibiliza&ccedil;&atilde;o dos quais a FCT n&atilde;o poder&aacute; corresponder &agrave;s solicita&ccedil;&otilde;es no &acirc;mbito do exerc&iacute;cio de direitos e cumprimento de deveres emergentes da rela&ccedil;&atilde;o jur&iacute;dico-formativa j&aacute; estabelecida ou que pretenda estabelecer.</p>
+<p>Nos termos legais, &eacute;-me garantido o exerc&iacute;cio dos direitos de acesso, retifica&ccedil;&atilde;o, atualiza&ccedil;&atilde;o e apagamento dos meus dados pessoais ou oposi&ccedil;&atilde;o ao tratamento dos mesmos, salvaguardando-se os casos previstos na lei onde o respons&aacute;vel pelo tratamento apresente raz&otilde;es imperiosas e leg&iacute;timas que prevale&ccedil;am sobre os interesses, direitos e liberdades do titular dos dados, podendo ainda ser apresentada reclama&ccedil;&atilde;o &agrave; Autoridade de Controlo.</p>
+<p>Tomei, ainda, conhecimento de que a FCT poder&aacute; alterar ou ajustar a sua Pol&iacute;tica de Privacidade quando necess&aacute;rio, bem como tomei tomei conhecimento que os contactos do Encarregado de Prote&ccedil;&atilde;o de Dados est&atilde;o dispon&iacute;veis em:&nbsp;<a href="https://www.fct.pt/dpo">https://www.fct.pt/dpo</a></p>
+<p>Presto o meu consentimento de forma livre, volunt&aacute;ria, expl&iacute;cita e informada, e confirmo que tenho a idade legal m&iacute;nima exigida (16 anos).</p>
+<p>Ao indicar os meus dados pessoais no formul&aacute;rio de registo, manifesto a minha concord&acirc;ncia com as condi&ccedil;&otilde;es acima indicadas, assinalando de forma inequ&iacute;voca o meu consentimento.</p>
+<p style="text-align: right;"><strong>Atualizado em: 31-01-2019</strong></p>
+    </section>
+</main>

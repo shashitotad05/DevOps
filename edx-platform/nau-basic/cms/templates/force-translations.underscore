@@ -1,0 +1,30 @@
+
+<% // Translators: NAU-252 %>
+<%- gettext("Forgot password?") %>
+
+<% // Translators: NAU-252 - Not need and not working because the key has already changed %>
+<%- gettext("Please enter your email address below and we will send you instructions for setting a new password.") %>
+
+<% // Translators: Workshop change cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx %>
+<%- gettext("Re-run Course") %>
+
+<% // Translators: GN-84 cms/templates/js/access-editor.underscore %>
+<%- gettext("Select a prerequisite subsection and enter a minimum score percentage and minimum completion percentage to limit access to this subsection. Allowed values are 0-100") %>
+
+<% // Translators: GN-84 cms/templates/js/access-editor.underscore %>
+<%- gettext("Minimum Completion:") %>
+
+<% // Translators: GN-84 cms/templates/js/access-editor.underscore %>
+<%- gettext("The minimum completion percentage must be a whole number between 0 and 100."
+
+<% // Translators: GN-154 %>
+<%- gettext("Please note: Deletion of your account and personal data is permanent and cannot be undone. {platformName} will not be able to recover your account or the data that is deleted.") %>
+
+<% // Translators: GN-154 %>
+<%- gettext("Once your account is deleted, you cannot use it to take courses on the {platformName} app, {siteName}, or any other site hosted by {platformName}.") %>
+
+<% // Translators: GN-154 %>
+<%- gettext("You have selected “Delete my account.” Deletion of your account and personal data is permanent and cannot be undone. {platformName} will not be able to recover your account or the data that is deleted.") %>
+
+<% // Translators: GN-154 %>
+<%- gettext("If you proceed, you will be unable to use this account to take courses on the {platformName} app, {siteName}, or any other site hosted by {platformName}.") %>

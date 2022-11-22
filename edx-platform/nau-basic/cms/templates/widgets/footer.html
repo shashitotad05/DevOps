@@ -1,0 +1,148 @@
+## mako
+<%page expression_filter="h"/>
+<%namespace name='static' file='../static_content.html'/>
+<%!
+from django.utils.translation import ugettext as _
+from django.urls import reverse
+from datetime import datetime
+from django.conf import settings
+import pytz
+from cms.djangoapps.contentstore.config.waffle import waffle, ENABLE_ACCESSIBILITY_POLICY_PAGE
+from openedx.core.djangolib.markup import HTML, Text
+%>
+
+<div class="wrapper-footer wrapper">
+  <footer class="primary" role="contentinfo">
+
+    <div class="footer-content-primary">
+      <div class="colophon">
+        <p>&copy; ${datetime.now(pytz.timezone(settings.TIME_ZONE)).year} <a data-rel="edx.org" href="${marketing_link('ROOT')}" rel="external">${settings.PLATFORM_NAME}</a>.</p>
+      </div>
+
+        <nav class="nav-peripheral" aria-label="${_("Policies")}">
+          <ol>
+            % if is_marketing_link_set('TOS'):
+              <li class="nav-item nav-peripheral-tos">
+                <a data-rel="edx.org" href="${marketing_link('TOS')}">${_("Terms of Service")}</a>
+              </li>
+            % endif
+            % if is_marketing_link_set('PRIVACY'):
+              <li class="nav-item nav-peripheral-pp">
+                <a data-rel="edx.org" href="${marketing_link('PRIVACY')}">${_("Privacy Policy")}</a>
+              </li>
+            % endif
+            % if waffle().is_enabled(ENABLE_ACCESSIBILITY_POLICY_PAGE):
+              <li class="nav-item nav-peripheral-aar">
+                <a data-rel="edx.org" href="${reverse('accessibility')}">${_("Accessibility Accommodation Request")}</a>
+              </li>
+            %endif
+            <li class="nav-item">
+              <a data-rel="edx.org" id="lms-link" href="${settings.LMS_ROOT_URL}">${_("LMS")}</a>
+            </li>
+          </ol>
+        </nav>
+    </div>
+
+    <div class="footer-content-secondary" aria-label="${_("Legal")}">
+      <div class="footer-about-copyright">
+        ## Site operators: Please do not remove this paragraph! This attributes back to edX and makes your acknowledgement of edX's trademarks clear.
+        <p>
+          ## Translators: 'EdX', 'edX', 'Studio', and 'Open edX' are trademarks of 'edX Inc.'. Please do not translate any of these trademarks and company names.
+          ${Text(_("edX, Open edX, Studio, and the edX and Open edX logos are registered trademarks or trademarks of {link_start}edX Inc.{link_end}")).format(
+            link_start=HTML(u"<a data-rel='edx.org' href='https://www.edx.org/'>"),
+            link_end=HTML(u"</a>")
+          )}
+        </p>
+      </div>
+      <div class="footer-logo-partner">
+        <div class="footer-about-openedx">
+        <a href="http://open.edx.org" title="${_("Powered by Open edX")}">
+          <img alt="${_("Powered by Open edX")}" src="https://files.edx.org/openedx-logos/edx-openedx-logo-tag.png">
+        </a>
+        </div>
+      </div>
+    </div>
+<!--
+    <section id="entities-quick-links">        
+      <ul class="flex-row">
+        <li><a href="https://nau.edu.pt"><img id="logo-nau" src="${static.url('images/nau_sempre_aprender.svg')}" alt="Logo NAU" title="NAU - Sempre a Aprender"></a>
+            <span id="copyright" >&copy; 2020 - FCT|FCCN. Todos os direitos reservados.</span>
+        </li>
+        <li><a id="logo-compete" href="https://www.fccn.pt/financiamento-projeto-nau/"><img src="${static.url('images/3logos-feder_small.png')}" alt="Logos: Compete, Portugal 2020 e União Europeia - Fundo Europeu de Desenvolvimento Regional"  title="Compete 2020, Portugal 2020 e União Europeia - Fundo Europeu de Desenvolvimento Regional"></a></li>
+        <li><a id="logo-incode2030" href="https://www.incode2030.gov.pt/" target="_blank"><img src="${static.url('images/logo_incode2030_v3.png')}" alt="Portugal - INcode2030" title="Visitar o site INcode.2030"></a></li>  
+      </ul>
+    </section>
+-->
+    <%
+  entities_logos = static.get_value('NAU_ENTITIES_FOOTER', {}).get("itens", {})
+%>
+    <!-- corporate entities logos -->
+    <section id="entities-quick-links">
+      % for entity in entities_logos:
+      <div class="entities-links-logo">
+        <a href="${entity['link']}" class="entity-link" target="_blank" rel="noreferer noopener">
+          <img src="${entity['image']}" alt="${entity['alt'] if 'alt' in entity.keys() else ''}">
+        </a>
+      </div>
+      % endfor
+    </section>
+    <section class="site-copyright">
+      <div class="site-copyright--nau">
+        <span>&copy; ${datetime.now().year} - FCT|FCCN<br>${_('All rights reserved')}</span>
+      </div>
+    </section>
+    <!-- ends corporate entities --> 
+
+  </footer>
+</div>
+
+
+## Jira Service Desk Widget
+<%
+  jira_service_desk = static.get_value('NAU_STUDIO_JIRA_SERVICE_DESK_KEY', getattr(settings, 'NAU_STUDIO_JIRA_SERVICE_DESK_KEY', None))
+%>
+% if jira_service_desk:
+  <script data-jsd-embedded data-key="${jira_service_desk}" data-base-url="https://jsd-widget.atlassian.com" src="https://jsd-widget.atlassian.com/assets/embed.js"></script>
+% endif
+
+
+## Chatbot
+<%
+  chatbox_startup_js_url = static.get_value('NAU_STUDIO_CHATBOT_JS_URL', getattr(settings, 'NAU_STUDIO_CHATBOT_JS_URL', None))
+%>
+% if chatbox_startup_js_url:
+  <%
+    chatbot_user_email = ""
+    if user.is_authenticated:
+      chatbot_user_email = user.email
+    endif
+    chatbot_user_course = ""
+    if course:
+      chatbot_user_course = course.display_name_with_default + "-" + course.display_org_with_default +  "-" + course.display_number_with_default
+    endif
+  %>
+  <script>
+    function loadScript(src, callback) {
+      var s,
+          r,
+          t;
+      r = false;
+      s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.src = src;
+      s.id = 'botscriptpass';
+      s.setAttribute("param_curso", "${chatbot_user_course}");
+      s.setAttribute("param_email", "${chatbot_user_email}");
+      s.onload = s.onreadystatechange = function () {
+        if (!r && (!this.readyState || this.readyState == 'complete')) {
+            r = true;
+            callback();
+        }
+      };
+      t = document.getElementsByTagName('script')[0];
+      t.parentNode.insertBefore(s, t);
+    }
+    loadScript("${chatbox_startup_js_url}", function () {
+    });
+  </script>
+% endif

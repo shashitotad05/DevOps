@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="98" height="37" viewBox="0 0 98 37">
+  <g id="Group_427" data-name="Group 427" transform="translate(-218 -230)">
+    <g id="Group_390" data-name="Group 390" transform="translate(217.737 230)">
+      <g id="Group_381" data-name="Group 381" transform="translate(0 0)">
+        <g id="Group_368" data-name="Group 368" transform="translate(0 0)">
+          <g id="Group_367" data-name="Group 367">
+            <g id="Rectangle_231" data-name="Rectangle 231" transform="translate(0.263 0)" fill="none" stroke="#444" stroke-width="1">
+              <rect width="98" height="37" rx="18.5" stroke="none"/>
+              <rect x="0.5" y="0.5" width="97" height="36" rx="18" fill="none"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="Component_3_2" data-name="Component 3 – 2" transform="translate(260 239)">
+      <g id="Group_386" data-name="Group 386">
+        <g id="Rectangle_28" data-name="Rectangle 28" fill="none" stroke="#000" stroke-width="1">
+          <rect width="15" height="19" rx="2" stroke="none"/>
+          <rect x="0.5" y="0.5" width="14" height="18" rx="1.5" fill="none"/>
+        </g>
+      </g>
+      <g id="Group_416" data-name="Group 416" transform="translate(2.5 6.5)">
+        <path id="Path_57" data-name="Path 57" d="M0,0H10" fill="none" stroke="#000" stroke-width="1"/>
+        <path id="Path_186" data-name="Path 186" d="M0,0H10" transform="translate(0 3)" fill="none" stroke="#000" stroke-width="1"/>
+        <path id="Path_187" data-name="Path 187" d="M0,0H10" transform="translate(0 6)" fill="none" stroke="#000" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>

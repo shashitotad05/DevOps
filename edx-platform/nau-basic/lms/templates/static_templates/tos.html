@@ -1,0 +1,21 @@
+<%page expression_filter="h"/>
+<%! from django.utils.translation import ugettext as _ %>
+<%inherit file="../main.html" />
+
+<%block name="pagetitle">${_("Terms of Service")}</%block>
+
+<main id="main" aria-label="Content" tabindex="-1">
+    <section class="container about">
+        <h1>
+            <%block name="pageheader">${page_header or _("Terms of Service")}</%block>
+        </h1>
+        <p>
+            This page aims to publish the terms of service, covering aspects such as:
+			Terms of service
+			Copyright on the contents of the site
+			Brand and trademark guidelines
+			Exclusions of warranties and disclaimers.
+
+        </p>
+    </section>
+</main>

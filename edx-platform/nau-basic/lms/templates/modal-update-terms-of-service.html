@@ -1,0 +1,88 @@
+## mako
+
+## Pop up / modal that opens when the user needs to give this consent to the new terms of service of the platform.
+
+<%page expression_filter="h"/>
+<%namespace name='static' file='static_content.html'/>
+<%!
+from openedx.core.djangoapps.user_api.preferences.api import get_user_preference
+from django.utils.translation import ugettext as _
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
+%>
+<%
+options_modal = configuration_helpers.get_value("MODAL_UPDATE_TERMS_OF_SERVICE", {})
+modal_tos_date = options_modal.get("date_iso_8601", None)
+modal_tos_text = options_modal.get("text", {}).get(LANGUAGE_CODE, "We have updated our terms of service")
+%>
+
+%if modal_tos_date is not None:
+## The javascript code bellow displays the modal if need
+<div class="modal-update-terms-of-service-container" style="display: none;"> 
+  <div class="modal-update-terms-of-service-content">
+    ${modal_tos_text | n}
+    <button class="button-modal btn-primary">${_('Accept new terms of service')}</button>
+  </div>
+</div>
+
+  %if user.is_authenticated:
+  <% 
+  modal_tos_user_preference_key = 'update_terms_of_service_' + modal_tos_date.replace('-','_')
+  value_preference = get_user_preference(user, modal_tos_user_preference_key)
+  %>
+
+  <script type="text/javascript">
+
+    const newTosModal = (function () {
+      const valuePreference = '${value_preference}';
+      const urlPreferenceTos = '/api/user/v1/preferences/${user}/${modal_tos_user_preference_key}';
+      const namePreferenceTos ='${modal_tos_user_preference_key}';
+      const userDateJoined = new Date("${user.date_joined}");
+      const dateModalTos = new Date("${modal_tos_date}");
+      const userJoinedAfterTosDate = userDateJoined.getTime() >= dateModalTos.getTime();
+
+      function displayModal() {
+        $('.modal-update-terms-of-service-container').css('display', 'block');
+      }
+
+      function hideModal() {
+        $('.modal-update-terms-of-service-container').css('display', 'none');
+      }
+
+      function updatePreference() {
+        $.ajax({
+          url: urlPreferenceTos,
+          type: 'PUT',
+          dataType:'json',
+          contentType: "application/json",
+          data:"true"
+        });
+      }
+      
+      function getPreference() {  
+        if (userJoinedAfterTosDate || valuePreference == 'True'){
+            hideModal()
+        } else {
+          displayModal()
+        }   
+        events();
+      }
+
+      function events() {
+        $('.button-modal').on('click', function(){
+          hideModal();
+          updatePreference();
+        });
+      }
+
+      return {
+        getPreference: getPreference
+      }
+    })();
+
+    $(window).load (function (){
+      newTosModal.getPreference();
+    });
+
+  </script>
+  %endif
+%endif

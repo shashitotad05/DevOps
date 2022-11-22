@@ -1,0 +1,244 @@
+## mako
+
+<%page expression_filter="h" args="online_help_token"/>
+
+
+<%namespace name='static' file='../static_content.html'/>
+<%!
+from distutils.util import strtobool
+from django.urls import reverse
+from django.utils.translation import ugettext as _
+from lms.djangoapps.ccx.overrides import get_current_ccx
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
+from openedx.core.djangoapps.lang_pref.api import header_language_selector_is_enabled, released_languages
+
+# App that handles subdomain specific branding
+from branding import api as branding_api
+
+%>
+
+<%
+  www_pt = static.get_value('NAU_MARKETING_BASE_HREF', {}).get("pt-pt", "")
+  www_en = static.get_value('NAU_MARKETING_BASE_HREF', {}).get("en", "") 
+  
+  # in future when using different URLs on marketing per language
+  nau_marketing_base_href_current_lang = static.get_value('NAU_MARKETING_BASE_HREF', {}).get(LANGUAGE_CODE, "/")
+
+  logo_image_url = static.get_value('NAU_LOGO_IMAGE_URL', static.get_value('logo_image_url', {}))
+  if isinstance(logo_image_url, str) and (logo_image_url is None or not (logo_image_url.startswith('http://') or logo_image_url.startswith('https://') or logo_image_url.startswith('//') ) ):
+    logo_image_url = branding_api.get_logo_url(is_secure)
+%> 
+
+<%doc>
+
+<h1 class="header-logo">
+  <a href="${branding_api.get_home_url()}">
+    <%block name="navigation_logo">
+    <img  class="logo" src="${branding_api.get_logo_url(is_secure)}" alt="${_("{platform_name} Home Page").format(platform_name=static.get_platform_name())}"/>
+    </%block>
+  </a>
+  % if course:
+    <div class="course-header">
+      <span class="provider">${course.display_org_with_default}:</span>
+      <span class="course-number">${course.display_number_with_default}</span>
+      <%
+      display_name = course.display_name_with_default
+      if settings.FEATURES.get('CUSTOM_COURSES_EDX', False):
+        ccx = get_current_ccx(course.id)
+        if ccx:
+          display_name = ccx.display_name
+      %>
+      <span class="course-name" title="${display_name}">${display_name}</span>
+    </div>
+  % endif
+</h1>
+% if enable_enterprise_sidebar:
+  <div class="enterprise-tagline">
+    <% tagline = configuration_helpers.get_value('ENTERPRISE_TAGLINE', settings.ENTERPRISE_TAGLINE) %>
+    % if tagline:
+      ${tagline}
+    % endif
+  </div>
+% endif
+
+</%doc>
+
+<div class="branding-top-nav">
+    <a class="nau-header-logo-link" href="${nau_marketing_base_href_current_lang}">
+      <picture>
+        % if isinstance(logo_image_url, dict):
+          % for source in logo_image_url.get('sources',[]):
+            <source media="${source.get('media','')}" srcset="${source.get('srcset','')}">
+          % endfor
+        % endif
+        <%
+          logo_image_alt = _("{platform_name} Home Page").format(platform_name=static.get_platform_name())
+          logo_image_style_value = ''
+          logo_image_title = ''
+          logo_image_src = logo_image_url
+          if isinstance(logo_image_url, dict):
+            logo_image_src = logo_image_url.get('src', '')
+            if isinstance(logo_image_src, dict):
+              logo_image_src = logo_image_src.get(LANGUAGE_CODE, logo_image_src.get('pt-pt', ''))
+            logo_image_alt = logo_image_url.get('alt', {})
+            if isinstance(logo_image_alt, dict):
+              logo_image_alt = logo_image_alt.get(LANGUAGE_CODE, '')
+            logo_image_title = logo_image_url.get('title', {})
+            if isinstance(logo_image_title, dict):
+              logo_image_title = logo_image_title.get(LANGUAGE_CODE, '')
+            logo_image_max_width = 'max-width: ' + logo_image_url.get('max-width', '') + '; ' if 'max-width' in logo_image_url else ''
+            logo_image_max_height = 'max-height: ' + logo_image_url.get('max-height', '') + '; ' if 'max-height' in logo_image_url else ''
+            logo_image_style_value = logo_image_max_width + logo_image_max_height
+        %>
+        <img 
+          class="logo" 
+          src="${logo_image_src}"
+          alt="${logo_image_alt}"
+          title="${logo_image_title}"
+          width="${logo_image_url.get('width', '')}"
+          height="${logo_image_url.get('height', '')}"
+          style="${logo_image_style_value}" />
+      </picture>
+    </a>
+
+    <a id="open-menu-arrow" href="javascript:void(0)" onclick="openNav(0)" title="Abrir">&#9776;</a>
+
+    % if course:
+      <% 
+        org_logo_dict = static.get_value('NAU_HEADER_ORGANIZATION_LOGOS', {}).get(course.display_org_with_default)
+        org_logo_src = None
+      %>
+      <div class="nau-header-course">
+        % if org_logo_dict is not None:
+          <%
+            org_logo_src = org_logo_dict.get('src')
+            org_logo_max_width = 'max-width: ' + org_logo_dict.get('max-width', '') + '; ' if 'max-width' in org_logo_dict else ''
+            org_logo_max_height = 'max-height: ' + org_logo_dict.get('max-height', '') + '; ' if 'max-height' in org_logo_dict else ''
+            org_logo_style_value = org_logo_max_width + org_logo_max_height
+          %>
+          % if org_logo_src is not None:
+            <img 
+              src="${org_logo_src}" 
+              alt="${org_logo_dict.get('alt','')}" 
+              title="${org_logo_dict.get('title','')}" 
+              width="${org_logo_dict.get('width','')}" 
+              height="${org_logo_dict.get('height','')}" 
+              style="${org_logo_style_value}"
+              />  
+          % endif
+        % endif
+        <div class="nau-header-course-information ${'with-image' if org_logo_src is not None else 'without-image'}">
+          <span class="provider">${course.display_org_with_default}</span>
+          <span class="course-number">${course.display_number_with_default}</span>
+          <%
+          display_name = course.display_name_with_default
+          if settings.FEATURES.get('CUSTOM_COURSES_EDX', False):
+            ccx = get_current_ccx(course.id)
+            if ccx:
+              display_name = ccx.display_name
+          %>
+          <span class="course-name">${display_name}</span>
+        </div>
+      </div>
+    % endif
+
+    <% tagline = configuration_helpers.get_value('NAU_HEADER_TAGLINE', None) %>
+    % if tagline and not course:
+      <div class="nau-header-tagline">
+        ${tagline}
+      </div>
+    % endif
+
+    <!-- starts menu container -->
+    <div class="menu-container">
+      <!-- starts top nav menu -->
+      <a id="close-menu-arrow" href="javascript:void(0)" onclick="closeNav(0)" title="Fechar">&#10005;</a>
+      <!-- starts top nav action container -->
+      <div id="actions_container"> 
+        % if header_language_selector_is_enabled():
+          <% languages = released_languages() %>
+          % if len(languages) > 1:
+            <form action="/i18n/setlang/" method="post" class="settings-language-form" id="language-settings-form">
+              <input type="hidden" id="csrf_token" name="csrfmiddlewaretoken" value="${csrf_token}">
+              % if user.is_authenticated:
+                <input title="preference api" type="hidden" class="url-endpoint" value="${reverse('preferences_api', kwargs={'username': user.username})}" data-user-is-authenticated="true">
+              % else:
+                <input title="session update url" type="hidden" class="url-endpoint" value="${reverse('session_language')}" data-user-is-authenticated="false">
+              % endif            
+              <label><span class="sr">${_("Choose Language")}</span>
+              <select class="input select language-selector" id="settings-language-value" name="language">
+                % for language in languages:
+                  % if language[0] == LANGUAGE_CODE:
+                    <option value="${language[0]}" selected="selected">${language[1]}</option>
+                  % else:
+                    <option value="${language[0]}" >${language[1]}</option>
+                  % endif
+                % endfor
+              </select>
+              </label>
+            </form>
+          % endif
+        % endif
+      
+        % if user.is_authenticated:
+              <%include file="navbar-authenticated.html" args="online_help_token=online_help_token"/>
+        % else:
+              <%include file="navbar-not-authenticated.html" args="online_help_token=online_help_token"/>
+        % endif
+            
+        <div class="hamburger-menu" role="button" aria-label=${_("Options Menu")} aria-expanded="false" aria-controls="mobile-menu" tabindex="0">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </div>        
+        
+      <!-- ends login and register -->     
+      </div>        
+    <!-- ends top nav action container --> 
+    </div>
+<!-- ends menu container -->     
+</div>
+
+
+<!-- ends branding container -->
+<div class="menu-overlay" onclick="closeNav(0)"></div>
+
+  % if course:
+    <div class="course-header">
+      <span class="provider">${course.display_org_with_default}:</span>
+      <span class="course-number">${course.display_number_with_default}</span>
+      <%
+      display_name = course.display_name_with_default
+      if settings.FEATURES.get('CUSTOM_COURSES_EDX', False):
+        ccx = get_current_ccx(course.id)
+        if ccx:
+          display_name = ccx.display_name
+      %>
+      <span class="course-name">${display_name}</span>
+    </div>
+  % endif
+
+
+<script>
+// starts menu opening and closing button for menu: cross
+const menuContainer = document.querySelector(".menu-container");
+const bodyOverlay = document.getElementsByTagName("body")[0];
+const openMenu = document.getElementById("open-menu-arrow");
+
+function openNav() {
+  menuContainer.style.cssText = "display: block";
+  openMenu.style.cssText = "display:none;"; 
+  document.getElementById("close-menu-arrow").style.cssText = "display:block";
+  document.querySelector(".menu-overlay").style.cssText = "display:block;"; 
+  bodyOverlay.classList.add("enable-overlay");
+}
+function closeNav() {
+  menuContainer.style.cssText = "display: none";
+  openMenu.style.cssText = "display:block;";
+  document.getElementById("close-menu-arrow").style.cssText = "display:none";  
+  document.querySelector(".menu-overlay").style.cssText = "display:none;";
+  bodyOverlay.classList.remove("enable-overlay");
+}
+// ends menu opening and closing button for menu: cross
+</script>

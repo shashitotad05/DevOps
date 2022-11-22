@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="98" height="37" viewBox="0 0 98 37">
+  <g id="Group_399" data-name="Group 399" transform="translate(-452 -226)">
+    <g id="Group_391" data-name="Group 391" transform="translate(452.185 226)">
+      <g id="Group_385" data-name="Group 385" transform="translate(0 0)">
+        <g id="Group_368" data-name="Group 368" transform="translate(0 0)">
+          <g id="Group_367" data-name="Group 367" transform="translate(0)">
+            <g id="Rectangle_231" data-name="Rectangle 231" transform="translate(-0.185 0)" fill="none" stroke="#444" stroke-width="1">
+              <rect width="98" height="37" rx="18.5" stroke="none"/>
+              <rect x="0.5" y="0.5" width="97" height="36" rx="18" fill="none"/>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g id="Component_5_1" data-name="Component 5 – 1" transform="translate(70.815 9)">
+        <ellipse id="Ellipse_69" data-name="Ellipse 69" cx="8.5" cy="9.5" rx="8.5" ry="9.5" fill="#53e174"/>
+        <path id="Path_179" data-name="Path 179" d="M4830.134-3251.237l3.417,3.306,5.7-5.8" transform="translate(-4826.054 3260.26)" fill="none" stroke="#282829" stroke-width="2"/>
+      </g>
+    </g>
+    <g id="Component_4_1" data-name="Component 4 – 1" transform="translate(498 236)">
+      <path id="Polygon_5" data-name="Polygon 5" d="M7.168,1.248a1,1,0,0,1,1.664,0l6.131,9.2A1,1,0,0,1,14.131,12H1.869a1,1,0,0,1-.832-1.555Z" transform="translate(12) rotate(90)"/>
+    </g>
+  </g>
+</svg>

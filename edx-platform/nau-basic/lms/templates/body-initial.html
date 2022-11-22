@@ -1,0 +1,10 @@
+## mako
+<%namespace name='static' file='static_content.html'/>
+
+<% nau_gtm_tracking_id = static.get_value('NAU_GOOGLE_TAG_MANAGER_ID', getattr(settings, 'NAU_GOOGLE_TAG_MANAGER_ID', None)) %>
+% if nau_gtm_tracking_id:
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${nau_gtm_tracking_id}"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+% endif

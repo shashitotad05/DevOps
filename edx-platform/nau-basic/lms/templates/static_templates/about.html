@@ -1,0 +1,33 @@
+<%page expression_filter="h"/>
+<%! from django.utils.translation import ugettext as _ %>
+<%inherit file="../main.html" />
+
+<%block name="pagetitle">${_("About")}</%block>
+
+<main id="main" aria-label="Content" tabindex="-1">
+    <section class="container about">
+        <h1>
+            <%block name="pageheader">${page_header or _("About")}</%block>
+        </h1>
+        <p>
+          ${_('NAU - Always Learning is a technical infrastructure which publishes  and provides support to Massive Open courses aimed at public administration and Higher Education.')}
+        </p>
+        <p>
+          ${_('This platform was created within the scope of NAU Project launched in October 1st 2017 with the following partners:')}
+          <ul>
+            <li>FCT - Fundação para a Ciência e a Tecnologia</li>
+            <li>DGE - Direção-Geral da Educação</li>
+            <li>DGS - Direção-Geral da Saúde</li>
+            <li>INA - Direção-Geral da Qualificação dos trabalhadores em Funções Públicas</li>
+            <li>IEFP - Instituto do Emprego e Formação Profissional</li>
+            <li>SGMEC - Secretaria-Geral da Educação e Ciência</li>
+          </ul>
+        </p>
+
+        <h2>${_('NAU Project')}</h2>
+
+        <p>${_('A national iniciative, led by the Foundation for Science and Technology, to build and operate a technical infrastructure which supports and operates a platform that publishes content to big audiences, such as MOOC courses. This initiative, cross-sectional to several ministries and open to society, will facilitate training to a larger number of civil servants and citizens.')}</p>
+
+        <p>${_('Explore the NAU Project at: ')} <a href="https://www.fccn.pt/projeto-nau/" >https://www.fccn.pt/projeto-nau/</a></p>
+    </section>
+</main>

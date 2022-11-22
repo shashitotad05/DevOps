@@ -1,0 +1,291 @@
+# Portuguese (Portugal) translations for PROJECT.
+# Copyright (C) 2021 FCT-FCCN
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: ajuda@nau.edu.pt\n"
+"POT-Creation-Date: 2021-11-29 18:00+0000\n"
+"PO-Revision-Date: 2021-06-02 21:22+0000\n"
+"Last-Translator: NAU <info@nau.edu.pt>\n"
+"Language: pt_PT\n"
+"Language-Team: pt_PT <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+# NAU-252
+#: edx-platform/nau-basic/cms/templates/force-translations.underscore:3
+msgid "Forgot password?"
+msgstr "Esqueceu a senha?"
+
+# NAU-252
+#: edx-platform/nau-basic/cms/templates/force-translations.underscore:6
+msgid ""
+"Please enter your email address below and we will send you instructions "
+"for setting a new password."
+msgstr ""
+"Por favor, insira seu endereço de e-mail abaixo e nós enviaremos as "
+"instruções para a criação de uma nova senha. "
+
+# Workshop change
+#: edx-platform/nau-basic/cms/templates/force-translations.underscore:9
+msgid "Re-run Course"
+msgstr "Nova Edição"
+
+# GN-84
+#: edx-platform/nau-basic/cms/templates/force-translations.underscore:12
+msgid ""
+"Select a prerequisite subsection and enter a minimum score percentage and"
+" minimum completion percentage to limit access to this subsection. "
+"Allowed values are 0-100"
+msgstr ""
+"Selecione uma subsecção de pré-requisitos e defina a percentagem mínima "
+"de pontuação obtida e a percentagem mínima de conteúdo a visualizar, "
+"necessárias para limitar o acesso a esta subsecção. Os valores permitidos"
+" são 0-100"
+
+# GN-84
+#: edx-platform/nau-basic/cms/templates/force-translations.underscore:15
+msgid "Minimum Completion:"
+msgstr "Percentagem mínima de conteúdo a visualizar:"
+
+# GN-84
+#: edx-platform/nau-basic/cms/templates/force-translations.underscore:18
+msgid ""
+"The minimum completion percentage must be a whole number between 0 and "
+"100."
+msgstr ""
+"A percentagem mínima de respostas a visualizar deve ser um número inteiro"
+" entre 0 e 100."
+
+# GN-154
+#: edx-platform/nau-basic/cms/templates/force-translations.underscore:21
+msgid ""
+"Please note: Deletion of your account and personal data is permanent and "
+"cannot be undone. {platformName} will not be able to recover your account"
+" or the data that is deleted."
+msgstr ""
+"Observe: A exclusão de sua conta e dados pessoais é permanente e não pode"
+" ser revertida. A equipa NAU não será capaz de recuperar sua conta ou os "
+"dados que são excluídos."
+
+# GN-154
+#: edx-platform/nau-basic/cms/templates/force-translations.underscore:24
+msgid ""
+"Once your account is deleted, you cannot use it to take courses on the "
+"{platformName} app, {siteName}, or any other site hosted by "
+"{platformName}."
+msgstr ""
+"Uma vez que a conta seja eliminada, já não poderá frequentar cursos na "
+"plataforma NAU."
+
+# GN-154
+#: edx-platform/nau-basic/cms/templates/force-translations.underscore:27
+msgid ""
+"You have selected “Delete my account.” Deletion of your account and "
+"personal data is permanent and cannot be undone. {platformName} will not "
+"be able to recover your account or the data that is deleted."
+msgstr ""
+"Você selecionou \"Excluir minha conta\". A exclusão de sua conta e dados "
+"pessoais é permanente e não pode ser desfeita. A equipa de suporte NAU "
+"não será capaz de recuperar sua conta ou os dados que são excluídos."
+
+# GN-154
+#: edx-platform/nau-basic/cms/templates/force-translations.underscore:30
+msgid ""
+"If you proceed, you will be unable to use this account to take courses on"
+" the {platformName} app, {siteName}, or any other site hosted by "
+"{platformName}."
+msgstr "Se você prosseguir, você não poderá usar esta conta NAU."
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:40
+#, python-format
+msgid "Prerequisite: %(prereq_display_name)s"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:48
+msgid "Contains staff only content"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:54
+msgid "Unpublished changes to live content"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:56
+msgid "Unpublished units will not be released"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:58
+msgid "Unpublished changes to content that will release in the future"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:66
+msgid "Access to this unit is restricted to: {selectedGroupsLabel}"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:75
+msgid ""
+"Access to some content in this unit is restricted to specific groups of "
+"learners"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:80
+msgid "Ungraded"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:89
+msgid "Practice proctored Exam"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:91
+msgid "Proctored Exam"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:95
+msgid "Timed Exam"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:108
+#, python-format
+msgid "Collapse/Expand this %(xblock_type)s"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:120
+msgid "Display Name"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:130
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:132
+msgid "Publish"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:138
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:140
+msgid "Configure"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:146
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:148
+msgid "Duplicate"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:154
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:156
+msgid "Delete"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:162
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:164
+msgid "Drag to reorder"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:182
+msgid "Release Status:"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:187
+msgid "Released:"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:190
+msgid "Scheduled:"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:193
+msgid "Unscheduled"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:208
+msgid "Section Highlights"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:215
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:229
+msgid "Graded as:"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:222
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:233
+msgid "Due:"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:244
+msgid "Subsection is hidden after course end date"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:246
+msgid "Subsection is hidden after due date"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:268
+msgid "You haven't added any content to this course yet."
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:272
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:298
+#, python-format
+msgid "Click to add a new %(xblock_type)s"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:277
+msgid "New Chapter"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:303
+msgid "New Section"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:305
+msgid "New Subsection"
+msgstr ""
+
+#: edx-platform/nau-basic/cms/templates/js/course-outline.underscore:307
+msgid "New Unit"
+msgstr ""
+
+#: edx-platform/nau-basic/lms/templates/student_account/register.underscore:6
+msgid "Already have an {platformName} account?"
+msgstr "Já tem uma conta {platformName}?"
+
+#: edx-platform/nau-basic/lms/templates/student_account/register.underscore:7
+msgid "Sign in."
+msgstr "Iniciar sessão."
+
+#: edx-platform/nau-basic/lms/templates/student_account/register.underscore:18
+msgid "Create an account using"
+msgstr "Criar uma conta utilizando"
+
+#: edx-platform/nau-basic/lms/templates/student_account/register.underscore:31
+#, python-format
+msgid "Create account using %(providerName)s."
+msgstr "Criar conta utilizando %(providerName)s."
+
+#: edx-platform/nau-basic/lms/templates/student_account/register.underscore:38
+msgid "Use my institution/campus credentials"
+msgstr "Utilize as minhas credenciais da instituição/campus"
+
+#: edx-platform/nau-basic/lms/templates/student_account/register.underscore:44
+msgid "or create a new one here"
+msgstr "ou criar uma nova aqui"
+
+#: edx-platform/nau-basic/lms/templates/student_account/register.underscore:48
+msgid "Create an Account"
+msgstr "Criar uma Conta"
+
+#: edx-platform/nau-basic/lms/templates/student_account/register.underscore:60
+msgid "Support education research by providing additional information"
+msgstr "Apoiar a investigação em educação, fornecendo informações adicionais"
+
+#: edx-platform/nau-basic/lms/templates/student_account/register.underscore:67
+msgid "Create Account"
+msgstr "Criar Conta"
+
+#: edx-platform/nau-basic/lms/templates/student_account/register.underscore:78
+msgid "Find out how to associate your Portuguese Citizen Card to your NAU account"
+msgstr "Descubra como associar o seu Cartão de Cidadão Português à sua conta NAU"
+

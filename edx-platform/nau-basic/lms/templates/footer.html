@@ -1,0 +1,158 @@
+## mako
+<%page expression_filter="h"/>
+<%!
+  from django.urls import reverse
+  from datetime import datetime
+  from django.utils.translation import ugettext as _
+  from branding.api import get_footer
+  from openedx.core.djangoapps.lang_pref.api import footer_language_selector_is_enabled
+  from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
+%>
+<% footer = get_footer(is_secure=is_secure) %>
+<%namespace name='static' file='static_content.html'/>
+<%
+    www_pt = static.get_value('NAU_MARKETING_BASE_HREF', {}).get("pt-pt", "")
+    www_en = static.get_value('NAU_MARKETING_BASE_HREF', {}).get("en", "")
+    footer_menu = static.get_value('NAU_FOOTER_MENU', {}).get(LANGUAGE_CODE, {})
+    nau_social_media = static.get_value('NAU_SOCIAL_MEDIA', [])
+%>
+<footer>
+  <section id="footer-nav">
+    % if len(footer_menu)>0 or len(nau_social_media)>0:
+      <div id="quick-links-section">
+        % if len(footer_menu)>0:
+          % for footer_menu_item in footer_menu:
+            <% html_link = footer_menu_item["html"] %>
+            <% children = footer_menu_item.get("itens", {}) %>
+            <div class='footer-links'>
+              <span class="footer-title">${html_link}</span>
+              <ul>
+                %for sub_item in children:
+                  <% sub_item_link = sub_item.get("link","") %>
+                  <% sub_item_html = sub_item["html"] %>
+                  <li><a href='${sub_item_link}'>${sub_item_html}</a></li>
+                %endfor
+              </ul>
+            </div>
+          % endfor
+        %endif
+        % if isinstance(nau_social_media, list) and len(nau_social_media)>0:
+          <!-- starts social media -->
+          <div class="footer-social">
+              <span class="footer-title">Siga-nos</span>
+              <div id="social-media">
+                <ul>
+                  % for social_media in nau_social_media:
+                    <li>
+                      <a
+                        href="${social_media.get('url','')}"
+                        target="${social_media.get('target','_blank')}"
+                        class="social-links external"
+                        title="${social_media.get('title', {}).get(LANGUAGE_CODE, '')}"
+                        rel="${social_media.get('rel','noopener')}">
+                        <span class="icon fa ${social_media.get('icon','')}" aria-hidden="true"></span>
+                        <span class="sr">${social_media.get('action', {}).get(LANGUAGE_CODE, '')}</span>
+                      </a>
+                    </li>
+                  % endfor
+                </ul>
+              </div>
+              <div id="openedx-logo"><a href="https://open.edx.org/" target="_blank"><img src="${static.url('images/edx-openedx-logo.png')}" alt="Powered by OpenEdX" title="${_('Visit OpenEdx website')}"></a></div>
+          </div>
+        %endif
+      </div>
+    %endif
+  </section>
+  <%
+    entities_logos = static.get_value('NAU_ENTITIES_FOOTER', {}).get("itens", {})
+  %>
+  % if len(entities_logos)>0:
+    <!-- corporate entities logos -->
+    <section id="entities-quick-links">
+      % for entity in static.get_value('NAU_ENTITIES_FOOTER', {}).get("itens", {}):
+      <div class="entities-links-logo">
+        <a href="${entity.get('link','')}" class="entity-link" target="${entity.get('target', '_blank')}" rel="noopener">
+          <img
+            loading="lazy"
+            src="${entity.get('image', '')}"
+            alt="${entity.get('alt', '')}"
+            title="${entity.get('title', '')}"
+            width="${entity.get('width', '')}"
+            height="${entity.get('height', '')}" />
+        </a>
+      </div>
+      % endfor
+    </section>
+    <!-- ends corporate entities -->
+  %endif
+  <section class="site-copyright">
+    <div class="site-copyright--nau">
+      <span>&copy; ${datetime.now().year} - FCT|FCCN<br>${_('All rights reserved')}</span>
+    </div>
+  </section>
+</footer>
+
+% if include_dependencies:
+  <%static:js group='base_vendor'/>
+  <%static:css group='style-vendor'/>
+  <%include file="widgets/segment-io.html" />
+  <%include file="widgets/segment-io-footer.html" />
+% endif
+% if footer_css_urls:
+  % for url in footer_css_urls:
+    <link rel="stylesheet" type="text/css" href="${url}"></link>
+  % endfor
+% endif
+
+<%include file="modal-update-terms-of-service.html" />
+
+
+## Jira Service Desk Widget
+<%
+  jira_service_desk = static.get_value('NAU_LMS_JIRA_SERVICE_DESK_KEY', getattr(settings, 'NAU_LMS_JIRA_SERVICE_DESK_KEY', None))
+%>
+% if jira_service_desk:
+  <script data-jsd-embedded data-key="${jira_service_desk}" data-base-url="https://jsd-widget.atlassian.com" src="https://jsd-widget.atlassian.com/assets/embed.js"></script>
+% endif
+
+
+## Chatbot
+<%
+  chatbox_startup_js_url = static.get_value('NAU_LMS_CHATBOT_JS_URL', getattr(settings, 'NAU_LMS_CHATBOT_JS_URL', None))
+%>
+% if chatbox_startup_js_url:
+  <%
+    chatbot_user_email = ""
+    if user.is_authenticated:
+      chatbot_user_email = user.email
+    endif
+    chatbot_user_course = ""
+    if course:
+      chatbot_user_course = course.display_name_with_default + "-" + course.display_org_with_default +  "-" + course.display_number_with_default
+    endif
+  %>
+  <script>
+    function loadScript(src, callback) {
+      var s,
+          r,
+          t;
+      r = false;
+      s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.src = src;
+      s.id = 'botscriptpass';
+      s.setAttribute("param_curso", "${chatbot_user_course}");
+      s.setAttribute("param_email", "${chatbot_user_email}");
+      s.onload = s.onreadystatechange = function () {
+        if (!r && (!this.readyState || this.readyState == 'complete')) {
+            r = true;
+            callback();
+        }
+      };
+      t = document.getElementsByTagName('script')[0];
+      t.parentNode.insertBefore(s, t);
+    }
+    loadScript("${chatbox_startup_js_url}", function () {
+    });
+  </script>
+% endif

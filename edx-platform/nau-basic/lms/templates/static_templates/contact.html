@@ -1,0 +1,16 @@
+<%page expression_filter="h"/>
+<%! from django.utils.translation import ugettext as _ 
+from openedx.core.djangolib.markup import HTML, Text
+%>
+<%inherit file="../main.html" />
+
+<%block name="pagetitle">${_("Contact")}</%block>
+
+<main id="main" aria-label="Content" tabindex="-1">
+    <section class="container contact">
+        <h1>
+            <%block name="pageheader">${page_header or _("Contact")}</%block>
+        </h1>
+        <p>${Text(_("The NAU team is always available to help you. Use our {link_start}knowledge base{link_end} if you need help.")).format(link_start=HTML('<a href="https://ajuda.nau.edu.pt">'), link_end=HTML('</a>'))}</p>        
+    </section>
+</main>

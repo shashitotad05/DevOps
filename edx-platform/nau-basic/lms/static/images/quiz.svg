@@ -1,0 +1,21 @@
+<svg id="Component_6_2" data-name="Component 6 – 2" xmlns="http://www.w3.org/2000/svg" width="22.933" height="22.282" viewBox="0 0 22.933 22.282">
+  <g id="Group_388" data-name="Group 388" transform="translate(15.169 0.97)">
+    <g id="Group_161" data-name="Group 161" transform="translate(4.288 -1) rotate(30)">
+      <path id="Path_188" data-name="Path 188" d="M1.932.022A2,2,0,0,1,3.887,2l.127,11.055L.149,13.013.022,1.958A1.892,1.892,0,0,1,1.932.022Z" transform="translate(0 0)" fill="#282829"/>
+      <path id="Path_189" data-name="Path 189" d="M1.932.022,3.9,3.472.039,3.427Z" transform="translate(4.066 17.604) rotate(-180)" fill="#282829"/>
+    </g>
+  </g>
+  <g id="Group_418" data-name="Group 418" transform="translate(-0.446 -16.444)">
+    <g id="Group_386" data-name="Group 386">
+      <g id="Path_190" data-name="Path 190">
+        <path id="Path_191" data-name="Path 191" d="M15.446,21.726a2,2,0,0,0-2-2h-11a2,2,0,0,0-2,2v15a2,2,0,0,0,2,2h11a2,2,0,0,0,2-2v-5.7" fill="none"/>
+        <path id="Path_192" data-name="Path 192" d="M14.446,31.305v5.421a1,1,0,0,1-1,1h-11a1,1,0,0,1-1-1v-15a1,1,0,0,1,1-1h11a1,1,0,0,1,1,1v6.079c.421.1.617-.26,1-.013V21.726a2,2,0,0,0-2-2h-11a2,2,0,0,0-2,2v15a2,2,0,0,0,2,2h11a2,2,0,0,0,2-2v-5.7A.812.812,0,0,1,14.446,31.305Z" fill="#1e1e1e"/>
+      </g>
+    </g>
+    <g id="Group_416" data-name="Group 416">
+      <path id="Path_57" data-name="Path 57" d="M2.946,26.226h10" fill="none" stroke="#1e1e1e" stroke-width="1"/>
+      <path id="Path_186" data-name="Path 186" d="M2.946,29.226h10" fill="none" stroke="#1e1e1e" stroke-width="1"/>
+      <path id="Path_187" data-name="Path 187" d="M2.946,32.226h10" fill="none" stroke="#1e1e1e" stroke-width="1"/>
+    </g>
+  </g>
+</svg>

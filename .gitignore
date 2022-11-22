@@ -1,0 +1,31 @@
+
+# Ignoring compiled css for edx-platform themes
+edx-platform/*/*/static/css/*
+
+# Common environment artifacts
+node_modules/
+venv/
+venv_theme/
+
+# Python artifacts
+*.pyc
+tests/collected_assets/
+
+# joe backup files
+*~
+
+# ignore .vscode
+.vscode
+
+### Internationalization artifacts
+*.mo
+*.po
+*.prob
+*.dup
+!django.po
+!django.mo
+!djangojs.po
+!djangojs.mo
+edx-platform/nau-basic/conf/locale/en/LC_MESSAGES/*.mo
+edx-platform/nau-basic/conf/locale/fake*/LC_MESSAGES/*.po
+edx-platform/nau-basic/conf/locale/fake*/LC_MESSAGES/*.mo
